@@ -17,16 +17,18 @@ namespace State
 				bool programClose = false;
 				while (!programClose)
 				{
-					string comand = Console.ReadLine()?.ToLower();
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    string comand = Console.ReadLine()?.ToLower();
+                    Console.ResetColor();
 					switch (comand)
 					{
 						case "-l":
-							Log($"Текущее состояние: {operationContext.GetState.GetName()}\n");
-							List<string> listAvailablFunction = operationContext.GetListAvailablFunction();
-							Log($"Доступные операции : \n{String.Join(", \n", listAvailablFunction)}");
+							Log($"Текущее состояние: {operationContext.GetState.GetName()}");
+							Log($"Доступные операции : \n{String.Join(", \n", operationContext.GetListAvailablFunction())}");
 							break;
-						case "open":
-							Log(operationContext.Open());
+						case "completed":
+							Log(operationContext.Completed());
 							break;
 						case "close":
 							programClose = operationContext.Close();
@@ -45,7 +47,8 @@ namespace State
 							break;
 						default:
 							Log("Такой операции не существует");
-							break;
+                            Log($"Доступные операции : \n{String.Join(", \n", operationContext.GetListAvailablFunction())}");
+                            break;
 					}
 				}
 			}
@@ -57,7 +60,7 @@ namespace State
 
 		private static void Log(string line)
 		{
-			Console.WriteLine(line);
+            Console.WriteLine($"{line}\n");
 		}
 	}
 }

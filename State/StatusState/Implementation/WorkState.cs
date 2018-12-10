@@ -5,38 +5,39 @@ namespace State.StatusState.Implementation
 {
 	public class WorkState : State
 	{
+        public WorkState() : base("В работе")
+        {
+        }
 
-		public override string Open()
+        [Info(Description = "Завершена работа")]
+        public override string Completed()
 		{
-			throw new MissingMethodException("В данном состоянии не работает");
+            this.Context.StateChange(new CompletedState());
+            return "Завершено";
 		}
 
-		[Info(Name = "Create", Description = "Что то создать")]
+		[Info(Description = "Что то создать")]
 		public override string Create()
 		{
 			return "Что то создать";
 		}
 
-		[Info(Name = "Read", Description = "Что то прочитать")]
+		[Info(Description = "Что то прочитать")]
 		public override string Read()
 		{
 			return "Что то прочитать";
 		}
 
-		[Info(Name = "Update", Description = "Что то обновить")]
+		[Info(Description = "Что то обновить")]
 		public override string Update()
 		{
 			return "Что то обновить";
 		}
 
-		[Info(Name = "Delete", Description = "Что то удалить")]
+		[Info(Description = "Что то удалить")]
 		public override string Delete()
 		{
 			return "Что то удалить";
-		}
-
-		public WorkState() : base("В работе")
-		{
 		}
 	}
 }

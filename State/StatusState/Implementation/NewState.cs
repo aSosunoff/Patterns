@@ -5,9 +5,12 @@ namespace State.StatusState.Implementation
 {
 	public class NewState : State
 	{
+        public NewState() : base("Новое")
+        {
+        }
 
-		[Info(Name = "Open", Description = "Открывает состояние работы")]
-		public override string Open()
+        [Info(Description = "Открывает состояние работы")]
+		public override string Completed()
 		{
 			this.Context.StateChange(new WorkState());
 			return "Взято в работу";
@@ -31,10 +34,6 @@ namespace State.StatusState.Implementation
 		public override string Delete()
 		{
 			throw new MissingMethodException("В данном состоянии не работает");
-		}
-
-		public NewState() : base("Новое")
-		{
 		}
 	}
 }

@@ -27,19 +27,19 @@ namespace State.StatusState
 				InfoAttribute attribute = methodInfo.GetCustomAttribute<InfoAttribute>();
 				if (attribute == null) continue;
 
-				result.Add($"{ attribute.Name } - { attribute.Description }");
+				result.Add($"{ methodInfo.Name } - { attribute.Description }");
 			}
 			return result;
 		}
 
-		public abstract string Open();
+		public abstract string Completed();
 
 		public string GetName()
 		{
 			return _stateName;
 		}
 
-		[Info(Name = "Close", Description = "Закрывает программу")]
+		[Info(Description = "Закрывает программу")]
 		public bool Close()
 		{
 			return true;
@@ -49,5 +49,5 @@ namespace State.StatusState
 		public abstract string Read();
 		public abstract string Update();
 		public abstract string Delete();
-	}
+    }
 }

@@ -25,9 +25,9 @@ namespace State.StatusState
 
 		public State GetState => _state;
 
-		public string Open()
+		public string Completed()
 		{
-			return this._state.Open();
+			return this._state.Completed();
 		}
 
 		public bool Close()

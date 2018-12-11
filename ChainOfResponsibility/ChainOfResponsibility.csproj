@@ -43,10 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Handler\AbstractHandler.cs" />
+    <Compile Include="Handler\Handler.cs" />
     <Compile Include="Handler\ConcreteHandler\IsOrderHandler.cs" />
     <Compile Include="Handler\ConcreteHandler\OrderCompletedHandler.cs" />
-    <Compile Include="Handler\ConcreteHandler\TwoHandler.cs" />
     <Compile Include="Handler\ConcreteHandler\NewOrderHandler.cs" />
     <Compile Include="Handler\IHandler.cs" />
     <Compile Include="Handler\ManagerOrderHandler.cs" />

@@ -3,24 +3,24 @@ using System.Collections.Generic;
 
 namespace ChainOfResponsibility.Handler
 {
-    public class AbstractHandler
+    public class Handler
     {
-        private AbstractHandler _nextHandler;
+        private Handler _nextHandler;
 	   
-        public virtual string Handler(Order order)
+        public virtual string Process(Order order)
         {
 	        if (_nextHandler != null)
-		        return _nextHandler.Handler(order);
+		        return _nextHandler.Process(order);
 	        else
 		        return $"{order.Name} - завершена обработка\n";
         }
 
-        public void SetNext(AbstractHandler handler)
+        public void SetNext(Handler handler)
         {
             _nextHandler = handler;
         }
 
 	    public bool isNextHandler => _nextHandler != null;
-	    public AbstractHandler GetNextHandler => _nextHandler;
+	    public Handler GetNextHandler => _nextHandler;
 	}
 }

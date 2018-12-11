@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace ChainOfResponsibility.Handler.ConcreteHandler
 {
-	public class IsOrderHandler : AbstractHandler
+	public class IsOrderHandler : Handler
 	{
-		public override string Handler(Order order)
+		public override string Process(Order order)
 		{
 			string result = String.Empty;
 
 			if (order != null)
-				result = base.Handler(order);
+				result = base.Process(order);
 
 			return result;
 		}

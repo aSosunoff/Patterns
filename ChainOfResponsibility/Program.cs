@@ -17,21 +17,30 @@ namespace ChainOfResponsibility
 				new Order{ Id = 0, Amount = 5, Name = "Колесо", CustomerId = 0, ProductNumber = 12 },
 				new Order{ Id = 1, Amount = 20, Name = "Гвозди", CustomerId = 4, ProductNumber = 43 },
 				new Order{ Id = 1, Amount = 20, Name = "Молоток", CustomerId = 0, ProductNumber = 15 },
-				new Order{ Id = 0, Amount = 20, Name = "Колесо", CustomerId = 7, ProductNumber = 45 }
+				new Order{ Id = 0, Amount = 20, Name = "Шпала", CustomerId = 7, ProductNumber = 45 }
 			};
 
             try
             {
-	            ManagerOrderHandler managerOrderHandler = new ManagerOrderHandler();
-	            managerOrderHandler.AddHundler(new IsOrderHandler());
-	            managerOrderHandler.AddHundler(new NewOrderHandler());
-	            managerOrderHandler.AddHundler(new OrderCompletedHandler());
+				ManagerOrderHandler managerOrderHandler = new ManagerOrderHandler();
+				managerOrderHandler.AddHundler(new IsOrderHandler());
+				managerOrderHandler.AddHundler(new NewOrderHandler());
+				managerOrderHandler.AddHundler(new OrderCompletedHandler());
+
+				Orders.ForEach(i =>
+	            {
+		            Console.WriteLine(managerOrderHandler.Execute(i));
+				});
+
+	            Log("----------------------------------------------------");
+
+				managerOrderHandler.RemoveHundler(new NewOrderHandler());
 
 	            Orders.ForEach(i =>
 	            {
 		            Console.WriteLine(managerOrderHandler.Execute(i));
-				});
-            }
+	            });
+			}
             catch (Exception ex)
             {
                 Log(ex.Message);

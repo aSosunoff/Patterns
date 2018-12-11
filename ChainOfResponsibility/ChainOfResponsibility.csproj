@@ -43,11 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractHandler.cs" />
-    <Compile Include="ConcreteHandler\ThirdHandler.cs" />
-    <Compile Include="ConcreteHandler\TwoHandler.cs" />
-    <Compile Include="ConcreteHandler\FirstHandler.cs" />
-    <Compile Include="IHandler.cs" />
+    <Compile Include="Handler\AbstractHandler.cs" />
+    <Compile Include="Handler\ConcreteHandler\IsOrderHandler.cs" />
+    <Compile Include="Handler\ConcreteHandler\OrderCompletedHandler.cs" />
+    <Compile Include="Handler\ConcreteHandler\TwoHandler.cs" />
+    <Compile Include="Handler\ConcreteHandler\NewOrderHandler.cs" />
+    <Compile Include="Handler\IHandler.cs" />
+    <Compile Include="Handler\ManagerOrderHandler.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

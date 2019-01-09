@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snapshot", "Snapshot\Snapsh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iterator", "Iterator\Iterator.csproj", "{12D5C96F-DB86-4061-87DC-055F6E3D66F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Observer", "Observer\Observer.csproj", "{6DAB06E8-73F4-45E7-A5BF-0DF4266BC008}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{12D5C96F-DB86-4061-87DC-055F6E3D66F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12D5C96F-DB86-4061-87DC-055F6E3D66F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12D5C96F-DB86-4061-87DC-055F6E3D66F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DAB06E8-73F4-45E7-A5BF-0DF4266BC008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DAB06E8-73F4-45E7-A5BF-0DF4266BC008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DAB06E8-73F4-45E7-A5BF-0DF4266BC008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DAB06E8-73F4-45E7-A5BF-0DF4266BC008}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

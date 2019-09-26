@@ -18,7 +18,26 @@ namespace Command
 			dbWorker.AddInsertHandler(EventInsertHandler);
 			dbWorker.AddDeleteHandler(EventDeleteHandler);
 
-			Regex regex = new Regex(@"^((?<oper>insert|delete)\s+(?<val>.+)\s*)$|^(?<oper>list)?", RegexOptions.Singleline);
+			bool iteration = false;
+
+			while (true)
+			{
+				//if (!iteration)
+				//{
+					dbWorker.Insert("1");
+					dbWorker.Insert("2");
+					dbWorker.Insert("3");
+					dbWorker.Delete("1");
+					dbWorker.Insert("4");
+					dbWorker.Insert("5");
+					dbWorker.Delete("2");
+					//iteration = true;
+				//}
+				Thread.Sleep(30000);
+			}
+
+
+			/*Regex regex = new Regex(@"^((?<oper>insert|delete)\s+(?<val>.+)\s*)$|^(?<oper>list)?", RegexOptions.Singleline);
 
 			while (true)
 			{
@@ -42,17 +61,17 @@ namespace Command
 					}
 				}
 				
-			}
+			}*/
 		}
 
-		public static void EventInsertHandler(DB db)
+		public static void EventInsertHandler(DB db, string item)
 		{
-			Console.WriteLine($"Event insert: {String.Join(", ", db.GetList())}");
+			Console.WriteLine($"Event insert ({item}): {String.Join(", ", db.GetList())}");
 		}
 
 		public static void EventDeleteHandler(DB db, string item)
 		{
-			Console.WriteLine($"Event delete: {item}");
+			Console.WriteLine($"Event delete ({item}): {String.Join(", ", db.GetList())}");
 		}
 	}
 }

@@ -38,7 +38,7 @@ namespace Command
 				_add(new RemoveCommand(db, data));
 		}
 
-		public void AddInsertHandler(Action<DB> handler)
+		public void AddInsertHandler(Action<DB, string> handler)
 		{
 			db.InsertEvent = handler;
 		}
@@ -62,19 +62,22 @@ namespace Command
 
 				Task.Run(() =>
 				{
-					bufferCommands = commands;
-					commands.RemoveAll(r => true);
-
-					while (bufferCommands.Count > 0)
+					while (commands.Count > 0)
 					{
-						if (!db.IsBusy)
+						bufferCommands = commands.GetRange(0, commands.Count);
+						commands.Clear();
+
+						while (bufferCommands.Count > 0)
 						{
-							Infrastructure.Command command = bufferCommands.First();
-							bufferCommands.Remove(command);
-							command.Execute();
+							if (!db.IsBusy)
+							{
+								Infrastructure.Command command = bufferCommands.First();
+								bufferCommands.Remove(command);
+								command.Execute();
+							}
 						}
 					}
-
+					
 					isRun = false;
 				});
 			}

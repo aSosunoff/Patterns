@@ -11,7 +11,7 @@ namespace Command
 		private bool _isBusy = false;
 		private int[] _delay = new[] {1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000};
 
-		public Action<DB> InsertEvent;
+		public Action<DB, string> InsertEvent;
 		public Action<DB, string> DeleteEvent;
 
 		public void Insert(string data)
@@ -22,7 +22,7 @@ namespace Command
 				Random random = new Random();
 				Thread.Sleep(_delay[random.Next(0, 9)]);
 				_table.Add(data);
-				InsertEvent(this);
+				InsertEvent(this, data);
 				UnBusy();
 			});
 		}

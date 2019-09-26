@@ -46,6 +46,11 @@ namespace Iterator
 			_list.Add(item);
 		}
 
+		public void Add(string[] item)
+		{
+			_list.AddRange(item);
+		}
+
 		public List<string> GetList()
 		{
 			return _list;

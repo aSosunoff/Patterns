@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="DB.cs" />
     <Compile Include="Infrastructure\ICommand.cs" />
+    <Compile Include="Infrastructure\RemoveAllCommand.cs" />
     <Compile Include="Infrastructure\RemoveCommand.cs" />
     <Compile Include="Infrastructure\InsertCommand.cs" />
     <Compile Include="Program.cs" />

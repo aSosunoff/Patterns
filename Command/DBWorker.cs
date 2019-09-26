@@ -38,6 +38,14 @@ namespace Command
 				_add(new RemoveCommand(db, data));
 		}
 
+		public void DeleteAll()
+		{
+			if (!db.IsBusy)
+				db.DeleteAll();
+			else
+				_add(new RemoveAllCommand(db, ""));
+		}
+
 		public void AddInsertHandler(Action<DB, string> handler)
 		{
 			db.InsertEvent = handler;

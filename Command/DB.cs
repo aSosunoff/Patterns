@@ -39,6 +39,19 @@ namespace Command
 			});
 		}
 
+		public void DeleteAll()
+		{
+			Busy();
+			Task.Run(() =>
+			{
+				Random random = new Random();
+				Thread.Sleep(_delay[random.Next(0, 9)]);
+				_table.Clear();
+				DeleteEvent(this, "Delete all objects");
+				UnBusy();
+			});
+		}
+
 		public List<string> GetList() => _table;
 		public void Busy() => _isBusy = true;
 		public void UnBusy() => _isBusy = false;

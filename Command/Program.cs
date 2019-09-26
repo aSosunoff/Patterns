@@ -31,7 +31,12 @@ namespace Command
 					dbWorker.Insert("4");
 					dbWorker.Insert("5");
 					dbWorker.Delete("2");
-					//iteration = true;
+					dbWorker.Insert("5");
+					dbWorker.Insert("5");
+					dbWorker.Insert("5");
+					dbWorker.Insert("5");
+					dbWorker.DeleteAll();
+				//iteration = true;
 				//}
 				Thread.Sleep(30000);
 			}

@@ -19,9 +19,9 @@ namespace Command
 			Busy();
 			Task.Run(() =>
 			{
-				_table.Add(data);
 				Random random = new Random();
 				Thread.Sleep(_delay[random.Next(0, 9)]);
+				_table.Add(data);
 				InsertEvent(this);
 				UnBusy();
 			});
@@ -38,11 +38,8 @@ namespace Command
 				UnBusy();
 			});
 		}
-		public string Read()
-		{
-			return String.Join(", ", _table);
-		}
 
+		public List<string> GetList() => _table;
 		public void Busy() => _isBusy = true;
 		public void UnBusy() => _isBusy = false;
 		public bool IsBusy => _isBusy;

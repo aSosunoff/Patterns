@@ -37,7 +37,7 @@ namespace Command
 							dbWorker.Delete(val);
 							break;
 						case "list":
-							Console.WriteLine($"{dbWorker.List()}");
+							Console.WriteLine($"{String.Join(", ", dbWorker.GetList())}");
 							break;
 					}
 				}
@@ -47,7 +47,7 @@ namespace Command
 
 		public static void EventInsertHandler(DB db)
 		{
-			Console.WriteLine($"Event insert: {db.Read()}");
+			Console.WriteLine($"Event insert: {String.Join(", ", db.GetList())}");
 		}
 
 		public static void EventDeleteHandler(DB db, string item)

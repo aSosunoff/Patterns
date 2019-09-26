@@ -10,6 +10,7 @@ namespace Command
 	public class DBWorker
 	{
 		List<Infrastructure.Command> commands = new List<Infrastructure.Command>();
+		List<Infrastructure.Command> bufferCommands = new List<Infrastructure.Command>();
 
 		private DB db;
 		private bool isRun;
@@ -19,10 +20,7 @@ namespace Command
 			db = new DB();
 		}
 
-		public string List()
-		{
-			return db.Read();
-		}
+		public List<string> GetList() => db.GetList();
 
 		public void Insert(string data)
 		{
@@ -60,16 +58,19 @@ namespace Command
 		{
 			if (!isRun)
 			{
+				isRun = true;
+
 				Task.Run(() =>
 				{
-					isRun = true;
+					bufferCommands = commands;
+					commands.RemoveAll(r => true);
 
-					while (commands.Count > 0)
+					while (bufferCommands.Count > 0)
 					{
 						if (!db.IsBusy)
 						{
-							Infrastructure.Command command = commands.First();
-							commands.Remove(command);
+							Infrastructure.Command command = bufferCommands.First();
+							bufferCommands.Remove(command);
 							command.Execute();
 						}
 					}
